@@ -1,5 +1,17 @@
 <h1>Party</h1>
 
+<% if @party.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@party.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+      <% @party.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with model: @party do |f|%>
     <%= f.label :name%>
     <%= f.text_field :name%>
