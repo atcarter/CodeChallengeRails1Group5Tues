@@ -5,7 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Party.find_or_create_by(name:"Halloween", date:Time.now, category:"scary", supplies: "Balloons and Things", private: false, budget: 500)
-Party.find_or_create_by(name:"Xmas Party", date:Time.now, category:"cheery", supplies: "snowman, candycane, and cookies", private: true, budget: 75)
-Party.find_or_create_by(name:"Dog Birthday", date:Time.now, category:"fun", supplies: "Dog cake, treats, and toys ", private: true, budget: 200)
-Party.find_or_create_by(name:"4th of July", date:Time.now, category:"fun", supplies: "grill, hotdogs, and hamburgers ", private: false, budget: 50)
+holiday = Category.find_or_create_by(name: "Holiday")
+birthday = Category.find_or_create_by(name: "Birthday")
+balloon = Supply.find_or_create_by(name: "Balloon")
+cake = Supply.find_or_create_by(name: "Cake")
+hotdog = Supply.find_or_create_by(name: "Hot Dogs")
+x = Party.find_or_create_by(name:"The Halloween", date:Time.now, category: holiday, private: false, budget: 500)
+Party.find_or_create_by(name:"The Xmas Party", date:Time.now, category: holiday, private: true, budget: 175)
+Party.find_or_create_by(name:"The Dog Birthday", date:Time.now, category: birthday, private: true, budget: 200)
+Party.find_or_create_by(name:"The 4th of July", date:Time.now, category: holiday, private: false, budget: 150)
+
+x.supplies = [balloon, cake]
